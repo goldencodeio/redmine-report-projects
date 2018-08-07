@@ -28,22 +28,3 @@ function APIRequest(reqUrl, options) {
 
   return result;
 }
-
-function APIRequestById(reqUrl, id, options) {
-  var url = 'http://redmine.zolotoykod.ru/' + reqUrl + '/' + id + '.json?key=' + OPTIONS.apiKey;
-  if (!options) options = {};
-  if (options.query)
-    options.query.forEach(function(item) {
-      url += '&' + item.key + '=' + item.value;
-    });
-
-  var response = UrlFetchApp.fetch(encodeURI(url), options);
-
-  // catch server errors
-  if (response.getResponseCode() >= 400)
-    throw response.getContentText();
-
-  var result = JSON.parse(response.getContentText());
-
-  return result;
-}

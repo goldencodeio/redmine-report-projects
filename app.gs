@@ -1,6 +1,6 @@
 function calculateTimeSpend() {
   initOptions();
-  // processTimeSpend();
+  processTimeSpend();
 }
 
 function onOpen() {
